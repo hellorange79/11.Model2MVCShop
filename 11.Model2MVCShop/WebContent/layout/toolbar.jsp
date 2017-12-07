@@ -56,10 +56,12 @@
 		                         <span class="caret"></span>
 		                     </a>
 		                     <ul class="dropdown-menu">
+		                     <c:if test="${user.role == 'admin' or user.role =='manage'}">
 		                         <li><a href="#">판매상품등록</a></li>
 		                         <li><a href="#">판매상품관리</a></li>
 		                         <li class="divider"></li>
 		                         <li><a href="#">etc..</a></li>
+		                         </c:if>
 		                     </ul>
 		                </li>
 	                 </c:if>
@@ -123,5 +125,33 @@
 	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
 		});
+		
+	 	//=============  판매상품등록  Event  처리 =============	
+	 	$( "a:contains('판매상품등록')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/addProductView.jsp");
+		});
+	 	
+	 	//=============  판매상품관리  Event  처리 =============	
+	 	$( "a:contains('판매상품관리')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/listProduct?menu=manage");
+	 		
+		});
+	 	
+	 	//=============  상품검색  Event  처리 =============	
+	 	$( "a:contains('상 품 검 색')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/listProduct?menu=search");
+	 		
+		});
+	 	
+	 	/* //=============  최근본상품  Event  처리 =============	
+	 	$( "a:contains('최근본상품')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/listProduct?menu=search");
+	 		
+		}); */
+		
 		
 	</script>  
