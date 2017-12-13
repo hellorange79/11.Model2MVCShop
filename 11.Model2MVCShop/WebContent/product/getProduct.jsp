@@ -1,44 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%--@page import="com.model2.mvc.service.product.vo.ProductVO"--%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html >
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<%--
+	ProductVO vo = (ProductVO) request.getAttribute("vo");
+	String menu = request.getParameter("menu");
+--%>
 
 
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
 
-$(function () {
-	 $( "td.ct_btn01:contains('이전')" ).on("click" , function() {
-			//Debug..
-			//alert(  $( "td.ct_btn01:contains('확인')" ).html() );
-			history.go(-1);
-		});
-	 
-	 $("td.ct_btn01:contains('수정')").on("click", function () {
-		 
-		 alert(  $( "td.ct_btn01:contains('수정')" ).html() );
-		 self.location ="/product/updateProduct?menu=${param.menu}&prodNo=${product.prodNo}";
-	});
-	 
-	 
-});
-
-
-</script>
+<title>Insert title here</title>
 </head>
-
-
-
 
 <body bgcolor="#ffffff" text="#000000">
 
-	<form name="detailForm" <%-- action="/getProduct.do?menu=${param.menu}" method="post" --%>
-	enctype="multipart/form-data">
+	<form name="detailForm" action="/product/getProduct?menu=${param.menu}" method="post">
 
 		<table width="100%" height="37" border="0" cellpadding="0"
 			cellspacing="0">
@@ -96,10 +79,12 @@ $(function () {
 				<td width="104" class="ct_write">상품이미지 <img
 					src="/images/ct_icon_red.gif" width="3" height="3"
 					align="absmiddle" />
+
 				</td>
-				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01">
-				<img src="/images/uploadFiles/${product.fileName}" /></td>
+				<td bgcolor="D6D6D6" width="104">${product.fileName}</td>
+				<td class="ct_write01" height="104"><img
+					src="/images/uploadFiles/../../images/empty.GIF" width="10"
+					height="10" /></td>
 			</tr>
 			<tr>
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -152,30 +137,33 @@ $(function () {
 
 							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
 								width="17" height="23" /></td>
-							<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-								<a href="/addPurchaseView.do?prodNo=${product.prodNo}">구매</a></td>
-								<td width="14" height="23">
-								<img src="/images/ct_btnbg03.gif" width="14" height="23"></td>
+							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
+								style="padding-top: 3px;"><a
+								href="/purchase/addPurchase?prodNo=${product.prodNo}">구매</a></td>
+							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
+								width="14" height="23"></td>
 							<td width="30"></td>
+
+							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
+								width="17" height="23" /></td>
+							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
+								style="padding-top: 3px;"><a
+								href="/product/updateProduct?prodNo=${product.prodNo}&menu="
+								${param.menu eq 'manage'}>수정</a></td>
+								<%--} --%>
+							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
+								width="14" height="23"></td>
+							<td width="30"></td>
+							
 							
 
 							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
 								width="17" height="23" /></td>
 							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;">수정</td>
-							<%-- <a href="/product/updateProductView?prodNo=${product.prodNo}&menu="${param.menu eq 'manage'}>수정</a>
-						 --%>
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif" width="14" height="23"></td>
-							<td width="30"></td>
-							
-							
-
-							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
-								width="17" height="23" /></td>
-							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;">
-								<a href="javascript:history.go(-1)">이전</a></td>
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif" width="14" height="23"></td>
+								style="padding-top: 3px;"><a
+								href="javascript:history.go(-1)">이전</a></td>
+							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
+								width="14" height="23"></td>
 						</tr>
 					</table>
 
