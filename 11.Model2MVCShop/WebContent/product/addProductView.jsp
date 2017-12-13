@@ -35,12 +35,7 @@
 <script type="text/javascript">
 
 function fncAddProduct(){
-	//Form 유효성 검증
- 	/* var name = document.detailForm.prodName.value;
-	var detail = document.detailForm.prodDetail.value;
-	var manuDate = document.detailForm.manuDate.value;
-	var price = document.detailForm.price.value; */
-
+	
 	var name =$("input[name='prodName']").val();
 	var detail =$("input[name='prodDetail']").val();
 	var manuDate =$("input[name='manuDate']").val();
@@ -63,19 +58,14 @@ function fncAddProduct(){
 		return;
 	}
 
-	//document.detailForm.action='/product/addProduct';
-	//document.detailForm.submit();
 	
 	$("form").attr("method" , "POST").attr("action" , "/product/addProduct").submit();
 	
 }
 
-/* function resetData(){
-	document.detailForm.reset();
-}
- */
+
 $(function() {
-	$("td.ct_btn01:contains('등록')").on("click", function(){
+	$("button.btn.btn-primary").on("click", function(){
 		
 		fncAddProduct();
 		
@@ -84,20 +74,18 @@ $(function() {
  
  
 $(function() {
-	$("td.ct_btn01:contains('취소')").on("click", function(){
+	$("button.btn.btn-primary:last").on("click" , function() {
 		$("form")[0].reset();
-		
 	});
-	
+});	
+
 $(function () {
-	$("td.ct_write01 img").on("click", function () {
-		show_calendar('document.detailForm.manuDate', 'document.detailForm.manuDate.value');
-	});
-	
+	$('#date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+
 });
 
 
-});
+
  
 </script>
 
@@ -145,11 +133,15 @@ $(function () {
 		  <div class="form-group">
 		    <label for=manuDate class="col-sm-offset-1 col-sm-3 control-label">제 조 일 자</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="manuDate" name="manuDate" >
-		      	<button type="button" class=" btn btn-default btn-ms">
-  				<span class="input-group-btn glyphicon glyphicon-calendar" aria-hidden="false"></span>
-				</button>
+		      <input type="text" class="form-control" id="manuDate" name="manuDate" >	
+		      	 <span id="helpBlock" class="help-block">
 		  		<strong class="text-danger">제조일자를 반드시 입력하세요.</strong>
+		  		</span>
+		    </div>
+		    <div class="col-lg-4">
+		     <button type="button" class="btn btn-default">
+		     <span class="glyphicon glyphicon-calendar"></span>
+		     </button>
 		    </div>
 		  </div>
 		  
@@ -167,14 +159,14 @@ $(function () {
 		<div class="form-group">
 		    <label for=fileName class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    <div class="col-sm-4">
-		      <input type="file" class="btn btn-danger">
+		      <input type="file" class="btn btn-default">
 		    </div>
 		  </div>
 		
 	   <div class="form-group">
 	     <div class="col-sm-offset-4  col-sm-4 text-center">
 		      <button type="button" class="btn btn-primary" >등&nbsp;록</button>
-			  <a class="btn btn-primary btn" href="#" role="button">취&nbsp;소</a>
+			 <button id="cancel"type="button" class="btn btn-primary" >취&nbsp;소</button>
 		 </div>
 	  </div>
 				  
