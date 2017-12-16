@@ -25,7 +25,7 @@
 		price , image_file, reg_date)
 		VALUES ( seq_product_prod_no.nextval, #{prodName} , #{prodDetail} ,
 		#{manuDate:VARCHAR} ,
-		#{price} , #{fileName} , SYSDATE )
+		#{price} , #{fileName:VARCHAR} , SYSDATE )
 	</insert>
 
 	<!-- SQL : SELECT ONE -->

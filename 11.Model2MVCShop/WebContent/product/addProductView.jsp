@@ -34,6 +34,26 @@
 
 <script type="text/javascript">
 
+$(function() {
+	$("button.btn.btn-info").on("click", function(){
+		
+		fncAddProduct();
+		
+	});
+});
+ 
+ 
+$(function() {
+	$("button.btn.btn-default").on("click" , function() {
+		$("form")[0].reset();
+	});
+});	
+
+$(function () {
+	$('#date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+
+});
+
 function fncAddProduct(){
 	
 	var name =$("input[name='prodName']").val();
@@ -63,35 +83,11 @@ function fncAddProduct(){
 	
 }
 
-
-$(function() {
-	$("button.btn.btn-primary").on("click", function(){
-		
-		fncAddProduct();
-		
-	});
-});
- 
- 
-$(function() {
-	$("button.btn.btn-primary:last").on("click" , function() {
-		$("form")[0].reset();
-	});
-});	
-
-$(function () {
-	$('#date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
-
-});
-
-
-
- 
 </script>
 
 </head>
 
-<body >
+<body>
 
 	<jsp:include page="/layout/toolbar.jsp" />
 	
@@ -105,12 +101,12 @@ $(function () {
 	       <h5 class="text-muted">새로운 상품을 <strong class="text-danger">
 	       	등록</strong>해 주세요.</h5>
 	    </div>
-	</div>
+	
 	
 	<form class="form-horizontal">
 		
 		  <div class="form-group">
-		    <label for="userId" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
+		    <label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="prodName" name="prodName">
 		      
@@ -165,13 +161,13 @@ $(function () {
 		
 	   <div class="form-group">
 	     <div class="col-sm-offset-4  col-sm-4 text-center">
-		      <button type="button" class="btn btn-primary" >등&nbsp;록</button>
-			 <button id="cancel"type="button" class="btn btn-primary" >취&nbsp;소</button>
+		     <button type="button" class="btn btn-info">등&nbsp;록</button>
+			 <button type="button" class="btn btn-default">취&nbsp;소</button>
 		 </div>
 	  </div>
 				  
 	</form>
-	    
+  </div> 
 
 </body>
 </html>
