@@ -48,20 +48,15 @@ function fncGetUserList(currentPage) {
 	
 	$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();
 }
-	//document.getElementById("currentPage").value = currentPage;
-   	//document.detailForm.submit();		
+	
    	
    	$(function () {
-		
-   		$("btn btn-default").on("click", function () {
-			
+   		$("button.btn.btn-default").on("click", function () {	
    			fncGetUserList(1);
-   			
    		});
-		
+   	});
    		
-   		
-   		
+   	$(function() {	
    		//menu=search 일때 ProductName  "click" getproduct //menu=manage 일때  ProductName "click" updateproduct
    		$("td:nth-child(2)").on("click", function () {
    		
@@ -79,15 +74,15 @@ function fncGetUserList(currentPage) {
    		
 		});
 		 
-   		
+   	});
    		
    		
 		//productName 빨간색으로변경
+	$(function() {	
+		
 		$( "td:nth-child(2)" ).css("color" , "blue");
 		$("h7").css("color" , "blue");
-		
-		
-   	
+	
    	});
 </script>
 </head>

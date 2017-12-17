@@ -57,20 +57,23 @@
 		FROM ( SELECT distinct p.prod_no , p.prod_name , p.price, p.reg_date,
 		t.tran_status_code 
 		FROM product p, transaction t 
-		WHERE p.prod_no = t.prod_no(+)
+		<where>
+		p.prod_no = t.prod_no(+)
+		
 		<if test="searchCondition != null">
-			<where>
+			
 				<if test="searchCondition == 0 and searchKeyword !='' ">
-					prod_no = #{searchKeyword}
+				and	p.prod_no = #{searchKeyword}
 				</if>
 				<if test="searchCondition == 1 and searchKeyword !='' ">
-					prod_name = #{searchKeyword}
+				and	p.prod_name = #{searchKeyword}
 				</if>
 				<if test="searchCondition == 2 and searchKeyword !='' ">
-					price = #{searchKeyword}
+				and	p.price = #{searchKeyword}
 				</if>
-			</where>
+			
 		</if>
+		</where>
 		ORDER BY prod_no ) inner_table
 		WHERE ROWNUM &lt;= #{endRowNum} )
 		WHERE row_seq BETWEEN #{startRowNum} AND
@@ -97,10 +100,9 @@
 				<if test="searchCondition == 2 and searchKeyword !='' ">
 					price = #{searchKeyword}
 				</if>
-
 			</where>
-		</if>
-		) countTable
+		</if>) countTable
+		
 	</select>
 
 </mapper>
