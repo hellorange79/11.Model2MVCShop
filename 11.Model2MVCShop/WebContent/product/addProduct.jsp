@@ -64,7 +64,9 @@ $(function() {
 	       <h5 class="text-muted"><strong class="text-danger">${product.prodName}</strong>
 	       	에 대한 상세정보</h5>
 		</div>
-	
+		
+		
+		<!-- 상품번호가 안나와 ㅠㅠㅠㅠㅠ  -->
 		<div class="row">
 	  		<div class="col-xs-4 col-md-2"><strong>상품번호</strong></div>
 			<div class="col-xs-8 col-md-4">${product.prodNo}</div>
@@ -114,8 +116,8 @@ $(function() {
 	
 		
 	<div class="row">
-	  		<div class="col-md-12 text-right ">
-	  			<button type="button" class="btn btn-primary">이전</button>
+	  		<div class="col-md-12 text-center ">
+	  			<button type="button" class="btn btn-primary">확인</button>
 	  		</div>
 		</div>
 	

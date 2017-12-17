@@ -132,7 +132,13 @@ $(function() {
 	</div>
 	
 	<form class="form-horizontal">
-		
+			<div class="form-group">
+		    <label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="prodNo" name="prodNo" value="${product.prodNo}">
+		    </div>
+		  </div>
+				
 		  <div class="form-group">
 		    <label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
 		    <div class="col-sm-4">
@@ -179,7 +185,7 @@ $(function() {
 		<div class="form-group">
 		    <label for=fileName class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    <div class="col-sm-4">
-		      <input type="file" class="btn btn-default">
+		      <input type="file" name="fileName" class="btn btn-default">
 		    </div>
 		  </div>
 		

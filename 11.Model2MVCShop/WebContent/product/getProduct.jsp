@@ -38,7 +38,7 @@
 		 $(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			 $( "button" ).on("click" , function() {
-					self.location = "/product/listProduct?menu=${param.menu}"
+					self.location = "/product/listProduct?menu=search"
 				});
 		});
 		
