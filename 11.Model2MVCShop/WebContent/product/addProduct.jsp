@@ -55,85 +55,73 @@ $(function() {
 
 <body>
 
-	<jsp:include page="/layout/toolbar.jsp" />
+	<jsp:include page="/layout/toolbar.jsp"/>
 	
 	<div class="container">
 	
-		<div class="page-header text-center">
-	       <h3 class=" text-info">
-	       <span class="glyphicon glyphicon-grain"></span>
-	       	 상 품 등 록 
-  			  <span class="glyphicon glyphicon-grain"></span></h3>
-  			  
-	       <h5 class="text-muted"> <strong class="text-danger">상품등록이완료되었습니다</strong></h5>
-	    </div>
-	</div>
+		<div class="page-header">
+	       <h3 class=" text-info">상품등록정보</h3>
+	       <h5 class="text-muted"><strong class="text-danger">${product.prodName}</strong>
+	       	에 대한 상세정보</h5>
+		</div>
 	
-	<form class="form-horizontal">
+		<div class="row">
+	  		<div class="col-xs-4 col-md-2"><strong>상품번호</strong></div>
+			<div class="col-xs-8 col-md-4">${product.prodNo}</div>
+		</div>
+	
+	<hr/>
+	
+		<div class="row">
+	  		<div class="col-xs-4 col-md-2 "><strong>상 품 명</strong></div>
+			<div class="col-xs-8 col-md-4">${product.prodName}</div>
+		</div>
+	
+	<hr/>
 		
-		   <div class="form-group">
-		    <label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
-		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="prodName" name="prodName" value="${product.prodName}">
-		      
-		       <span id="helpBlock" class="help-block">
-		      	<strong class="text-danger">상품명을 반드시 입력하세요.</strong>
-		      </span>
-		    </div>
-		  </div>
-		  
-		  <div class="form-group">
-		    <label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상 세 정 보</label>
-		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="prodDetail" name="prodDetail" value="${product.prodDetail}" >
-		    	<span id="helpBlock" class="help-block">
-		      	<strong class="text-danger">상세정보를 반드시 입력하세요.</strong>
-		      </span>
-		    </div>
-		  </div>
-		  
-		  <div class="form-group">
-		    <label for=manuDate class="col-sm-offset-1 col-sm-3 control-label">제 조 일 자</label>
-		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="manuDate" name="manuDate" value="${product.manuDate}" >	
-		      	 <span id="helpBlock" class="help-block">
-		  		<strong class="text-danger">제조일자를 반드시 입력하세요.</strong>
-		  		</span>
-		    </div>
-		    <div class="col-lg-4">
-		     <button type="button" class="btn btn-default">
-		     <span class="glyphicon glyphicon-calendar"></span>
-		     </button>
-		    </div>
-		  </div>
-		  
-		  <div class="form-group">
-		    <label for=price class="col-sm-offset-1 col-sm-3 control-label">가&nbsp;격</label>
-		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="price" name="price" value="${product.price}" >
-		    	<span id="helpBlock" class="help-block">
-		      	<strong class="text-danger">가격을 반드시 입력하세요.</strong>
-		      </span>
-		    
-		    </div>
-		  </div>
-		  
-		<div class="form-group">
-		    <label for=fileName class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
-		    <div class="col-sm-4">
-		      <input type="file" class="btn btn-default">
-		    </div>
-		  </div>
+		<div class="row">
+	  		<div class="col-xs-4 col-md-2 "><strong>가&nbsp;격</strong></div>
+			<div class="col-xs-8 col-md-4">${product.price}</div>
+		</div>
 		
-	  	
+
+	
+	<hr/>
+	
+		<div class="row">
+	 		<div class="col-xs-4 col-md-2 "><strong>상품이미지</strong></div>
+			<img src="../images/uploadFiles/${product.fileName}"  class="img-rounded" height="200" width="200">
+			
+		</div>
+		
+	<hr/>	
+	
+		<div class="row">
+	  		<div class="col-xs-4 col-md-2 "><strong>상세정보</strong></div>
+			<div class="col-xs-8 col-md-4">${product.prodDetail}</div>
+		</div>
+		
+	<hr/>
+	
+		<div class="row">
+	  		<div class="col-xs-4 col-md-2 "><strong>제조일자</strong></div>
+			<div class="col-xs-8 col-md-4">${product.manuDate}</div>
+		</div>
+		
+		
+	<hr/>
+	
+	
+		
 	<div class="row">
 	  		<div class="col-md-12 text-right ">
 	  			<button type="button" class="btn btn-primary">이전</button>
 	  		</div>
 		</div>
-				  
-	</form>
-	    
+	
+	</div>
+	
+	
 	
 </body>
 </html>
