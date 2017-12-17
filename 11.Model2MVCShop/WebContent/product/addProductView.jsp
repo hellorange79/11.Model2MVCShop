@@ -13,6 +13,12 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
+	<!-- 달력  -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 	
    <link href="/css/animate.min.css" rel="stylesheet">
    <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
@@ -26,10 +32,10 @@
 
         }
     </style>
-
+<!-- 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="../javascript/calendar.js"></script>
+<script type="text/javascript" src="../javascript/calendar.js"></script> -->
 
 
 <script type="text/javascript">
@@ -49,8 +55,11 @@ $(function() {
 	});
 });	
 
-$(function () {
-	$('#date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+$(function() {
+		$("datepicker").on("click", function name() {
+			show_calendar();
+		});
+	
 
 });
 
@@ -82,6 +91,16 @@ function fncAddProduct(){
 	$("form").attr("method" , "POST").attr("action" , "/product/addProduct").submit();
 	
 }
+
+$(function() {
+	  $( "#manuDate" ).datepicker({
+		  showOn: "button",
+	      buttonImage: "../images/ct_icon_date.gif",
+	      buttonImageOnly: true,
+	      buttonText: "Select date"
+	  });
+	});
+
 
 </script>
 
@@ -126,19 +145,15 @@ function fncAddProduct(){
 		    </div>
 		  </div>
 		  
-		  <div class="form-group">
+		 <div class="form-group">
 		    <label for=manuDate class="col-sm-offset-1 col-sm-3 control-label">제 조 일 자</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="manuDate" name="manuDate" >	
-		      	 <span id="helpBlock" class="help-block">
-		  		<strong class="text-danger">제조일자를 반드시 입력하세요.</strong>
+		      	<span id="helpBlock" class="help-block">
+		     <strong class="text-danger">제조일자를 반드시 입력하세요.</strong>
 		  		</span>
 		    </div>
-		    <div class="col-lg-4">
-		     <button type="button" class="btn btn-default">
-		     <span class="glyphicon glyphicon-calendar"></span>
-		     </button>
-		    </div>
+		  
 		  </div>
 		  
 		  <div class="form-group">
@@ -155,7 +170,7 @@ function fncAddProduct(){
 		<div class="form-group">
 		    <label for=fileName class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    <div class="col-sm-4">
-		      <input type="file" class="btn btn-default">
+		      <input type="file" name="fileName" class="btn btn-default">
 		    </div>
 		  </div>
 		

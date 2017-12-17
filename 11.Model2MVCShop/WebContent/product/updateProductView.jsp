@@ -13,13 +13,25 @@
 	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	<link rel="stylesheet" href="/css/admin.css" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	
+	
+	
+	<!-- 달력사용위한  -->
+
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
    <link href="/css/animate.min.css" rel="stylesheet">
    <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
    
+   <script type="text/javascript" src="../javascript/calendar.js"></script>
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
    
@@ -61,22 +73,44 @@ function fncUpdateProduct(){
 
 }
 
+
+//등록버튼 이벤트
 $(function() {
-	 $( "td.ct_btn01:contains('수정')" ).on("click" , function() {
+	 $( "button.btn.btn-primary" ).on("click" , function() {
 		
-		alert(  $( "td.ct_btn01:contains('수정')" ).html() );
+		alert(  $( "button.btn.btn-primary" ).html() );
 		fncUpdateProduct();
 	}); 
 	 
 });	
 
 
+
+//취소버튼 이벤트
 $(function() {
-	 $( "td.ct_btn01:contains('취소')" ).on("click" , function() {
-		alert(  $( "td.ct_btn01:contains('취소')" ).html() );
+	 $( "button.btn.btn-default" ).on("click" , function() {
+		alert(  $( "button.btn.btn-default" ).html() );
 		history.go(-1);
 	});
 });
+
+/* $(function() {
+	$("button.btn.btn-danger").on("click", function() {
+		show_calendar($("input[name='manuDate']"),$("input[name='manuDate']").val());
+	});
+
+
+}); */
+
+$(function() {
+	  $( "#manuDate" ).datepicker({
+		  showOn: "button",
+	      buttonImage: "../images/ct_icon_date.gif",
+	      buttonImageOnly: true,
+	      buttonText: "Select date"
+	  });
+	});
+
 	</script>
 
 </head>
@@ -124,15 +158,11 @@ $(function() {
 		    <label for=manuDate class="col-sm-offset-1 col-sm-3 control-label">제 조 일 자</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="manuDate" name="manuDate" value="${product.manuDate}" >	
-		      	 <span id="helpBlock" class="help-block">
-		  		<strong class="text-danger">제조일자를 반드시 입력하세요.</strong>
+		      	<span id="helpBlock" class="help-block">
+		     <strong class="text-danger">제조일자를 반드시 입력하세요.</strong>
 		  		</span>
 		    </div>
-		    <div class="col-lg-4">
-		     <button type="button" class="btn btn-default">
-		     <span class="glyphicon glyphicon-calendar"></span>
-		     </button>
-		    </div>
+		 		
 		  </div>
 		  
 		  <div class="form-group">
@@ -156,7 +186,7 @@ $(function() {
 	   <div class="form-group">
 	     <div class="col-sm-offset-4  col-sm-4 text-center">
 		      <button type="button" class="btn btn-primary" >등&nbsp;록</button>
-			 <button id="cancel"type="button" class="btn btn-primary" >취&nbsp;소</button>
+			 <button id="cancel" type="button" class="btn btn-default" >취&nbsp;소</button>
 		 </div>
 	  </div>
 				  
