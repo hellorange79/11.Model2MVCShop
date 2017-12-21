@@ -42,6 +42,13 @@
 				});
 		});
 		
+		 $(function() {
+				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+				 $( "button.btn.btn-info" ).on("click" , function() {
+						self.location = "/purchase/addPurchase?prodNo=${product.prodNo}"
+					});
+			});
+		
 	</script>
 
 </head>
@@ -108,6 +115,7 @@
 		
 	<div class="row">
 	  		<div class="col-md-12 text-right ">
+	  			<button type="button" class="btn btn-info">구매</button>
 	  			<button type="button" class="btn btn-primary">이전</button>
 	  		</div>
 		</div>

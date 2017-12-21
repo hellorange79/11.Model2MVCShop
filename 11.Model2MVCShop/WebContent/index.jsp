@@ -29,10 +29,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
-	<style></style>
+	<style>
+	
+	</style>
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
+	
 		
 		//============= 회원원가입 화면이동 =============
 		$( function() {
@@ -47,6 +50,14 @@
 			//==> 추가된부분 : "addUser"  Event 연결
 			$("a[href='#' ]:contains('로 그 인')").on("click" , function() {
 				self.location = "/user/login"
+			});
+		});
+		
+		//============= 상품검색 화면이동 =============
+		$( function() {
+			//==> 추가된부분 : "addUser"  Event 연결
+			$("a[href='#' ]:contains('상품검색')").on("click" , function() {
+				self.location = "/product/listProduct?menu=search"
 			});
 		});
 		
@@ -95,7 +106,7 @@
 			<div class="col-md-3">
 		        
 		       	<!--  회원관리 목록에 제목 -->
-				<div class="panel panel-primary">
+				<div class="panel panel-danger">
 					<div class="panel-heading">
 						<i class="glyphicon glyphicon-heart"></i> 회원관리
          			</div>
@@ -111,7 +122,7 @@
 		        </div>
                
                
-				<div class="panel panel-primary">
+				<div class="panel panel-warning">
 					<div class="panel-heading">
 							<i class="glyphicon glyphicon-briefcase"></i> 판매상품관리
          			</div>
@@ -126,7 +137,7 @@
 		        </div>
                
                
-				<div class="panel panel-primary">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 							<i class="glyphicon glyphicon-shopping-cart"></i> 상품구매
 	    			</div>

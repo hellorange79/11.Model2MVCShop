@@ -21,9 +21,20 @@
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
     	 body >  div.container{ 
-        	border: 3px solid #D6CDB7;
+        	
             margin-top: 10px;
         }
+        
+       .jumbotron h1 {
+    		color: pink;
+		} 
+		
+		.jumbotron label{
+			color: #f0ad4e;
+		}
+		.jumbotron{
+			background-color: #b64b56;
+		}
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -73,27 +84,25 @@
 	<!-- ToolBar Start /////////////////////////////////////-->
 	<div class="navbar  navbar-default">
         <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
+        	<a class="navbar-brand" href="/index.jsp">JungEun's SHOP</a>
    		</div>
    	</div>
-   	<!-- ToolBar End /////////////////////////////////////-->	
-	
-	<!--  화면구성 div Start /////////////////////////////////////-->
+
 	<div class="container">
 		<!--  row Start /////////////////////////////////////-->
 		<div class="row">
 		
 			<div class="col-md-6">
-					<img src="/images/logo-spring.png" class="img-rounded" width="100%" />
+				<img src="/images/pciture1.png" class="img" width="100%" />
 			</div>
+			
 	   	 	
 	 	 	<div class="col-md-6">
-	 	 	
-		 	 	<br/><br/>
-				
-				<div class="jumbotron">	 	 	
-		 	 		<h1 class="text-center">로 &nbsp;&nbsp;그 &nbsp;&nbsp;인</h1>
+	 	 
+				<div class="jumbotron">	
 
+		 	 		<h1 class="text-center">로 &nbsp;&nbsp;그 &nbsp;&nbsp;인</h1>
+						
 			        <form class="form-horizontal">
 		  
 					  <div class="form-group">

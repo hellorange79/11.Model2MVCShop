@@ -60,7 +60,7 @@ function fncGetUserList(currentPage) {
    		//menu=search 일때 ProductName  "click" getproduct //menu=manage 일때  ProductName "click" updateproduct
    		$("td:nth-child(2)").on("click", function () {
    		
-   			alert("${param.menu}")
+   			//alert("${param.menu}")
    		if("${param.menu}"=='manage'){
    			
    			self.location="/product/updateProduct?menu=${param.menu}&prodNo="+$($("input[name=prodbyNo]")[$("td:nth-child(2)").index(this)]).val();
