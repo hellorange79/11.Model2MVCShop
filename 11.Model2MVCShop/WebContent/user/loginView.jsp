@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
@@ -35,10 +36,16 @@
 		.jumbotron{
 			background-color: #b64b56;
 		}
+		
+		.kakao{
+			
+			background-color: #b64b56;
+		}
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
+
 
 		//============= "로그인"  Event 연결 =============
 		$( function() {
@@ -75,12 +82,33 @@
 			});
 		});
 		
+		//=======카카오계정 로그인===================////
+	/* 02189e6437c337e17f7b639d3fe93cc7 */	
+  
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('02189e6437c337e17f7b639d3fe93cc7');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        alert(JSON.stringify(authObj));
+      },
+      fail: function(err) {
+         alert(JSON.stringify(err));
+      }
+    });
+
+    };
+			
+		
 	</script>		
 	
 </head>
 
 <body>
-
+	 
+	
+	
 	<!-- ToolBar Start /////////////////////////////////////-->
 	<div class="navbar  navbar-default">
         <div class="container">
@@ -123,9 +151,16 @@
 					    <div class="col-sm-offset-4 col-sm-6 text-center">
 					      <button type="button" class="btn btn-primary"  >로 &nbsp;그 &nbsp;인</button>
 					      <a class="btn btn-primary btn" href="#" role="button">회 &nbsp;원 &nbsp;가 &nbsp;입</a>
+					      <!-- 카카오계정 로그이 ㄴ버튼   -->
+					    
+					     <a id="kakao-login-btn"href="http://developers.kakao.com/logout">
+					     <img src="/images/kakao_account_login_btn_medium_wide.png">
+					     </a>
+						
 					    </div>
 					  </div>
-			
+						
+						
 					</form>
 			   	 </div>
 			
