@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	
@@ -46,59 +47,79 @@
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 
+	 
+	$( function() {
+		
+		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+		$("#userId").focus();
+		
+		//==>"Login"  Event 연결
+		$("button.btn.btn-primary").on("click" , function() {
 
-		//============= "로그인"  Event 연결 =============
-		$( function() {
+			var id=$("input:text").val();
+			var pw=$("input:password").val();
 			
-			$("#userId").focus();
+			if(id == null || id.length <1) {
+				alert('ID 를 입력하지 않으셨습니다.');
+				$("input:text").focus();
+				return;
+			}
 			
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$("button").on("click" , function() {
-				var id=$("input:text").val();
-				var pw=$("input:password").val();
-				
-				if(id == null || id.length <1) {
-					alert('ID 를 입력하지 않으셨습니다.');
-					$("#userId").focus();
-					return;
-				}
-				
-				if(pw == null || pw.length <1) {
-					alert('패스워드를 입력하지 않으셨습니다.');
-					$("#password").focus();
-					return;
-				}
-				
-				$("form").attr("method","POST").attr("action","/user/login").attr("target","_parent").submit();
-			});
-		});	
-		
-		
-		//============= 회원원가입화면이동 =============
-		$( function() {
-			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$("a[href='#' ]").on("click" , function() {
-				self.location = "/user/addUser"
-			});
+			if(pw == null || pw.length <1) {
+				alert('패스워드를 입력하지 않으셨습니다.');
+				$("input:password").focus();
+				return;
+			}
+			
+			////////////////////////////////////////////////// 추가 , 변경된 부분 ////////////////////////////////////////////////////////////
+			//$("form").attr("method","POST").attr("action","/user/login").attr("target","_parent").submit();
+			////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			$.ajax( 
+					{
+						url : "/user/json/login",
+						method : "POST" ,
+						dataType : "json" ,
+						headers : {
+							"Accept" : "application/json",
+							"Content-Type" : "application/json"
+						},
+						data : JSON.stringify({
+							userId : id,
+							password : pw
+						}),
+						success : function(JSONData , status) {
+
+							//Debug...
+							console.log("JSONData : \n "+JSONData);
+							console.log(status);
+							console.log( "JSON.stringify(JSONData) : \n"+JSON.stringify(JSONData) );
+							console.log(JSONData != null);
+							
+							alert(status);
+							alert("JSONData : \n"+JSONData);
+							alert( "JSON.stringify(JSONData) : \n"+JSON.stringify(JSONData) );
+							alert( JSONData != null );
+							
+							if( JSONData != null ){
+							
+								$(window.parent.document.location).attr("href","/index.jsp");
+							
+							}
+						}
+				}); 
+				////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
 		});
-		
-		//=======카카오계정 로그인===================////
-	/* 02189e6437c337e17f7b639d3fe93cc7 */	
-  
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('02189e6437c337e17f7b639d3fe93cc7');
-    // 카카오 로그인 버튼을 생성합니다.
-    Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',
-      success: function(authObj) {
-        alert(JSON.stringify(authObj));
-      },
-      fail: function(err) {
-         alert(JSON.stringify(err));
-      }
-    });
-
-    };
+	});
+	
+	
+	//============= 회원원가입화면이동 =============
+	$( function() {
+		//==> 추가된부분 : "addUser"  Event 연결
+		$("img[src='/images/btn_add.gif']").on("click" , function() {
+			self.location = "/user/addUser"
+		});
+	});
 			
 		
 	</script>		
@@ -153,7 +174,8 @@
 					      <a class="btn btn-primary btn" href="#" role="button">회 &nbsp;원 &nbsp;가 &nbsp;입</a>
 					      <!-- 카카오계정 로그이 ㄴ버튼   -->
 					    
-					     <a id="kakao-login-btn"href="http://developers.kakao.com/logout">
+					     <a id="kakao-login-btn"
+					      href="https://kauth.kakao.com/oauth/authorize?client_id=dfe2041581c23da0c4e9c8aefb3c28a1&redirect_uri=http://127.0.0.1:8080/kakaologin&response_type=code">
 					     <img src="/images/kakao_account_login_btn_medium_wide.png">
 					     </a>
 						
